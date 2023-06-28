@@ -1,0 +1,52 @@
+<div class="p-10 border rounded-md border-white/20 bg-zinc-900">
+  <label [for]="item.description" class="flex items-center gap-2">
+    <input
+      [id]="item.description"
+      type="checkbox"
+      (change)="item.done = !item.done"
+      [checked]="item.done"
+    />
+    <p class="text-xl font-semibold">{{ item.description }}</p>
+  </label>
+
+  <div *ngIf="!editable" class="flex items-center w-full gap-2 mt-5">
+    <button
+      class="w-1/2 px-4 py-2 text-center bg-blue-500 rounded-md"
+      (click)="editable = !editable"
+    >
+      Edit
+    </button>
+    <button
+      class="w-1/2 px-4 py-2 text-center bg-blue-500 rounded-md"
+      (click)="remove.emit()"
+    >
+      Delete
+    </button>
+  </div>
+
+  <div class="" *ngIf="editable" class="mt-5">
+    <input
+      class="w-full p-2 duration-100 border rounded-md outline-none border-white/20 bg-zinc-900 focus:border-blue-500"
+      #editItem
+      placeholder="edit item"
+      [value]="item.description"
+      (keyup.enter)="saveItem(editItem.value)"
+      type="text"
+    />
+
+    <div class="flex items-center w-full gap-2 mt-5">
+      <button
+        class="w-1/2 px-4 py-2 text-center bg-blue-500 rounded-md"
+        (click)="editable = !editable"
+      >
+        Cancel
+      </button>
+      <button
+        class="w-1/2 px-4 py-2 text-center bg-blue-500 rounded-md"
+        (click)="saveItem(editItem.value)"
+      >
+        Save
+      </button>
+    </div>
+  </div>
+</div>

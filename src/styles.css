@@ -2,3 +2,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  font-family: "Roboto", sans-serif;
+  /* add a dark background color */
+  background-color: #1d1f1f;
+  color: #fefefe;
+}
